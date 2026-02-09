@@ -1,0 +1,14 @@
+setCpm(110/4)
+register('makeacid', (x, pat) => pat.lpf(100)
+         .lpenv(x * 9).lps(.2).lpd(.12)
+        )
+$: n("<0 4 0 9 7>*16").scale("g:minor").trans(-12).s("sawtooth").makeacid(slider(0.276))
+
+$: s("bd:2!4")
+  .duck("3:4:5:6")
+  .duckdepth(.8)
+  .duckattack(.16).makeacid(slider(0.082))
+
+$: s("[hh*8 hh*4]").makeacid(slider(0.418))
+
+
