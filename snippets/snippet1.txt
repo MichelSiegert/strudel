@@ -2,14 +2,15 @@ setCpm(90/4)
 register('makeacid', (x, pat) => pat.lpf(100)
          .lpenv(x * 9).lps(.2).lpd(.12)
         )
-$: n("<0 4 0 9 7>*16").scale("g:minor").trans(-12).s("sawtooth").makeacid(slider(0.172))
+$: n("<0 4 0 9 7>*16").scale("g:minor").trans(-12).s("sawtooth").makeacid(slider(0.151))
 
-$: n("<0>*16").scale("g:minor").trans(-8).s("supersaw").detune(rand).makeacid(slider(0.122))
+$: n("<0>*8").scale("g:minor").fast(2).trans(-8).s("supersaw").spread("2.8").detune("0.1").unison("2 7").makeacid(slider(0.137))
+
+$: note("{g g a# g g4}%8".add("{0 7 12 0}%8")).lpf(800).s("supersaw").dist("4:.2").makeacid(slider(0.086))
 
 $: s("bd:2!4")
   .duck("3:4:5:6")
   .duckdepth(.8)
-  .duckattack(.16).makeacid(slider(0.124))
+  .duckattack(.16).makeacid(slider(0.145))
 
 $: s("[hh*8 hh*4]").makeacid(slider(0.064))
-
