@@ -1,0 +1,33 @@
+setCpm(60/4)
+register('makeacid', (x, pat) => pat.lpf(100)
+  .lpenv(x * 9)
+  .lps(.2)
+  .lpd(.12))
+
+$: n("<0 4 0 9 7>*16")
+  .scale("g:minor").trans(12).s("sawtooth").makeacid(slider(0.385))
+
+$: n("<0>*16")
+  .scale("g:minor")
+  .trans(12)
+  .s("supersaw")
+  .detune("0.1")
+  .makeacid(slider(0.091))
+
+$: note("{g g a# g g4}%8"
+  .add("{0 7 12 0}%8"))
+  .trans(0)
+  .lpf(400)
+  .s("supersaw")
+  .detune("0.1")
+  .dist("4:.2")
+  .makeacid(slider(0.107))
+
+$: s("bd:2!8")
+  .duck("3:4:5:6")
+  .duckdepth(0.8)
+  .duckattack(.16)
+  .makeacid(slider(1))
+
+$: s("[hh*4 hh*8]")
+    .makeacid(slider(0))
